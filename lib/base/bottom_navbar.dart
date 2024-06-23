@@ -1,5 +1,6 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:ticket_app/screens/home_screen.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
@@ -12,12 +13,12 @@ class _BottomNavbarState extends State<BottomNavbar> {
   int _selectedIndex = 0;
 
   List<Widget> myScreens = [
-    const Center(child: Text("Home")),
+    const HomeScreen(),
     const Center(child: Text("Tickets")),
     const Center(child: Text("Search")),
     const Center(child: Text("Profile")),
   ];
-
+//for changing the screens when the navbar is tapped
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
