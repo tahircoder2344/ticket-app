@@ -28,11 +28,8 @@ class _BottomNavbarState extends State<BottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("My Ticket App"),
-        centerTitle: true, // Center the app bar title
-      ),
-      body: Center(child: myScreens[_selectedIndex]), // Ensure the body is centered
+      body: Center(
+          child: myScreens[_selectedIndex]), // Ensure the body is centered
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blueGrey,
