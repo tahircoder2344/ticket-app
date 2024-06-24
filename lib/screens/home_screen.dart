@@ -14,7 +14,9 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppStyles.bgColor,
       body: ListView(
         children: [
-          const SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -37,21 +39,22 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     Container(
-
                       width: 50,
                       height: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: const DecorationImage(
-                          image: AssetImage(AppMedia.logo)
-                        ),
+                            image: AssetImage(AppMedia.logo)),
                       ),
                     ),
                   ],
                 ), // Add closing parenthesis
-                const SizedBox(height: 25,),
+                const SizedBox(
+                  height: 25,
+                ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: AppStyles.searchBarColor,
@@ -59,20 +62,28 @@ class HomeScreen extends StatelessWidget {
                   child: const Row(
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(FluentSystemIcons.ic_fluent_search_regular, color: Color(0xFFBFC205),),
-                      Text("Search"),],
+                      Icon(
+                        FluentSystemIcons.ic_fluent_search_regular,
+                        color: Color(0xFFBFC205),
+                      ),
+                      Text("Search"),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 40,),
-                const AppReusables(bigText: 'Upcoming Flights', smallText: 'View All',),
-
-                const SizedBox(height: 40,),
-                const AppReusables(bigText: 'Upcoming Meetings', smallText: 'View All',),
+                const SizedBox(
+                  height: 40,
+                ),
+                const AppReusables(
+                  bigText: 'Upcoming Flights',
+                  smallText: 'View All',
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 const TicketView()
               ],
             ),
           ),
-
         ],
       ), // Remove extra comma
     ); // Add closing parenthesis
