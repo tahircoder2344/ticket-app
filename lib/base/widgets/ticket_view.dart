@@ -3,6 +3,10 @@ import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/base/widgets/app_layout_builder.dart';
 import 'package:ticket_app/base/widgets/plane_dot.dart';
 import 'package:ticket_app/base/widgets/side_semi_circle.dart';
+import 'package:ticket_app/base/widgets/text_style_fifith.dart';
+import 'package:ticket_app/base/widgets/text_style_fourth.dart';
+import 'package:ticket_app/base/widgets/text_style_third.dart';
+import 'package:ticket_app/base/widgets/ticket_column_layout.dart';
 
 class TicketView extends StatelessWidget {
   const TicketView({super.key});
@@ -17,6 +21,7 @@ class TicketView extends StatelessWidget {
         margin: const EdgeInsets.only(right: 16),
         child: Column(
           children: [
+            //blue part of tickets
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -31,11 +36,7 @@ class TicketView extends StatelessWidget {
                   //Departure and destination with icons
                   Row(
                     children: [
-                      Text(
-                        "NYC",
-                        style: AppStyles.headlineStyleThree
-                            .copyWith(color: Colors.white),
-                      ),
+                      const TextStyleThird(text: 'NYC',),
                       Expanded(child: Container()),
                       const PlaneDot(),
                       Expanded(
@@ -59,11 +60,7 @@ class TicketView extends StatelessWidget {
                       )),
                       const PlaneDot(),
                       Expanded(child: Container()),
-                      Text(
-                        "LDN",
-                        style: AppStyles.headlineStyleThree
-                            .copyWith(color: Colors.white),
-                      )
+                      const TextStyleThird(text: 'LDN',),
                     ],
                   ),
                   const SizedBox(
@@ -72,38 +69,34 @@ class TicketView extends StatelessWidget {
                   //Departure and time with name
                   Row(
                     children: [
-                      Text(
-                        "New York",
-                        style: AppStyles.headlineStyleTwo
-                            .copyWith(color: Colors.white),
+                      const SizedBox(
+                        width: 100,
+                        child: TextStyleFifith(text: 'New York',),
                       ),
                       Expanded(child: Container()),
-                      Text(
-                        "8H 30M",
-                        style: AppStyles.headlineStyleTwo
-                            .copyWith(color: Colors.white),
-                      ),
+                      const TextStyleFourth(text: '8H 30M',),
                       Expanded(child: Container()),
-                      Text(
-                        "London",
-                        style: AppStyles.headlineStyleTwo
-                            .copyWith(color: Colors.white),
+                      const SizedBox(
+                        width: 100,
+                        child:TextStyleFourth(text: "London",)
                       )
                     ],
                   ),
                 ],
               ),
             ),
+            //circles, dots and airplane
             Container(
               color: AppStyles.ticketRed,
-              child:  Row(
+              child:  const Row(
                 children: [
-                  const SideSemiCircle( isRight: false,),
-                  Expanded(child: Container()),
-                  const SideSemiCircle(isRight: true,),
+                  SideSemiCircle( isRight: false,),
+                  Expanded(child: AppLayoutBuilder(randomDivider: 16,width: 6,)),
+                  SideSemiCircle(isRight: true,),
                 ],
               ),
             ),
+            //orange part of tickets
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -113,71 +106,18 @@ class TicketView extends StatelessWidget {
                   bottomRight: Radius.circular(21),
                 ),
               ),
-              child: Column(
+              child: const Column(
                 children: [
                   //Departure and destination with icons
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "NYC",
-                        style: AppStyles.headlineStyleThree
-                            .copyWith(color: Colors.white),
-                      ),
-                      Expanded(child: Container()),
-                      const PlaneDot(),
-                      Expanded(
-                          child: Stack(
-                        children: [
-                          const SizedBox(
-                            height: 24,
-                            child: AppLayoutBuilder(
-                              randomDivider: 6,
-                            ),
-                          ),
-                          Center(
-                            child: Transform.rotate(
-                                angle: 1.57,
-                                child: const Icon(
-                                  Icons.local_airport_rounded,
-                                  color: Colors.white,
-                                )),
-                          )
-                        ],
-                      )),
-                      const PlaneDot(),
-                      Expanded(child: Container()),
-                      Text(
-                        "LDN",
-                        style: AppStyles.headlineStyleThree
-                            .copyWith(color: Colors.white),
-                      )
+                      TicketColumnLayout(ticketText: "1 May", bottomText: 'Date', alignment: CrossAxisAlignment.start,),
+                      TicketColumnLayout(ticketText: "08:00 AM", bottomText: 'Departure Time', alignment: CrossAxisAlignment.center,),
+                      TicketColumnLayout(ticketText: "23", bottomText: 'Number', alignment: CrossAxisAlignment.end,),
                     ],
                   ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  //Departure and time with name
-                  Row(
-                    children: [
-                      Text(
-                        "New York",
-                        style: AppStyles.headlineStyleTwo
-                            .copyWith(color: Colors.white),
-                      ),
-                      Expanded(child: Container()),
-                      Text(
-                        "8H 30M",
-                        style: AppStyles.headlineStyleTwo
-                            .copyWith(color: Colors.white),
-                      ),
-                      Expanded(child: Container()),
-                      Text(
-                        "London",
-                        style: AppStyles.headlineStyleTwo
-                            .copyWith(color: Colors.white),
-                      )
-                    ],
-                  ),
+
                 ],
               ),
             ),
