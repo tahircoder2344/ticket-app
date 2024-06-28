@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/utils/all_json.dart';
 import 'package:ticket_app/base/widgets/app_reusables.dart';
 import 'package:ticket_app/base/widgets/ticket_view.dart';
 
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                         Text(
                           "Good Morning",
                           style: AppStyles.headlineStyleTwo,
-                        ), // Add closing parenthesis
+                        ),
                         const SizedBox(height: 5),
                         Text(
                           "Book Tickets",
@@ -48,19 +49,18 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ],
-                ), // Add closing parenthesis
+                ),
                 const SizedBox(
                   height: 25,
                 ),
                 Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: AppStyles.searchBarColor,
                   ),
                   child: const Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(
                         FluentSystemIcons.ic_fluent_search_regular,
@@ -80,12 +80,18 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const TicketView()
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: ticketList.take(2).map((singleTicket) => TicketView(ticket:singleTicket)).toList(),
+                  ),
+
+                ),
               ],
             ),
           ),
         ],
-      ), // Remove extra comma
-    ); // Add closing parenthesis
+      ),
+    );
   }
 }
