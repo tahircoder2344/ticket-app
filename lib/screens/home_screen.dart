@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: AppStyles.searchBarColor,
@@ -73,9 +73,10 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                const AppReusables(
+                 AppReusables(
                   bigText: 'Upcoming Flights',
                   smallText: 'View All',
+                  func: () => Navigator.pushNamed(context, "all-tickets"),
                 ),
                 const SizedBox(
                   height: 20,
@@ -83,9 +84,19 @@ class HomeScreen extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: ticketList.take(2).map((singleTicket) => TicketView(ticket:singleTicket)).toList(),
+                    children: ticketList
+                        .take(2)
+                        .map((singleTicket) => TicketView(ticket: singleTicket))
+                        .toList(),
                   ),
-
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                 AppReusables(
+                  bigText: 'Hotels',
+                  smallText: 'View All',
+                  func: () => Navigator.pushNamed(context, "all-tickets"),
                 ),
               ],
             ),
